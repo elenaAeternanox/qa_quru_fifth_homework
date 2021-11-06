@@ -1,0 +1,94 @@
+package secondHomework.tests;
+
+import com.codeborne.selenide.SelenideElement;
+import com.github.javafaker.Faker;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Locale;
+
+public class TestData {
+
+    static Faker faker = new Faker(new Locale("en"));
+
+    private static String generateGender(int randomNumber) {
+        String genderRandom = null;
+        switch (randomNumber) {
+            case 0:
+                genderRandom = "Male";
+                break;
+            case 1:
+                genderRandom = "Female";
+                break;
+            case 2:
+                genderRandom = "Other";
+                break;
+        }
+        return genderRandom;
+    }
+
+    private static String generateHobbie(int randomHobbie) {
+        String hobbieRandom = null;
+        switch (randomHobbie) {
+            case 1:
+                hobbieRandom = "Sports";
+                break;
+            case 2:
+                hobbieRandom = "Reading";
+                break;
+            case 3:
+                hobbieRandom = "Music";
+                break;
+        }
+        return hobbieRandom;
+    }
+
+    private static LocalDate setBirthdayDate() {
+        Date startDate = Date.from(LocalDate.now().minusYears(120).atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date endDate = Date.from(LocalDate.now().minusYears(8).atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date birthdayDate = faker.date().between(startDate, endDate);
+        return birthdayDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    public static int subjectsNumber = faker.number().numberBetween(1, 2),
+            hobbiesNumber = faker.number().numberBetween(1, 3);
+
+    public static String
+            firstName = faker.name().firstName(),
+            lastName = faker.name().lastName(),
+            email = faker.internet().emailAddress(),
+            gender = generateGender(faker.number().numberBetween(0, 2)),
+            phoneNumber = String.valueOf(faker.number().digits(10)),
+            birthdayYear = String.valueOf(setBirthdayDate().getYear()),
+            birthdayMonthUpperCase = String.valueOf(setBirthdayDate().getMonth()),
+            birthdayMonth = birthdayMonthUpperCase.substring(0, 1) + birthdayMonthUpperCase.substring(1).toLowerCase(),
+            birthdayDay = String.valueOf(setBirthdayDate().getDayOfMonth()),
+            firstSubjectPrefix = "co",
+            firstSubject = "Computer Science",
+            secondSubjectPrefix = "e",
+            secondSubject = "English",
+            hobbieGenerated = generateHobbie(hobbiesNumber),
+            hobbieSport = "Sports",
+            hobbieRead = "Reading",
+            hobbieMusic = "Music",
+            fileName = "Tester.jpeg",
+            pictureFileSource = "src/test/resources/images/",
+            currentAddress = faker.address().streetAddress() + "" + faker.address().streetAddressNumber(),
+            statePrefix = "r",
+            state = "NCR",
+            cityPrefix = "d",
+            city = "Delhi";
+
+    public static String
+            rowStudentName = "Student Name",
+            rowStudentEmail = "Student Email",
+            rowGender = "Gender",
+            rowMobile = "Mobile",
+            rowDateOfBirth = "Date of Birth",
+            rowSubjects = "Subjects",
+            rowHobbies = "Hobbies",
+            rowPicture = "Picture",
+            rowAddress = "Address",
+            rowStateAndCity = "State and City";
+}
