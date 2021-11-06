@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static fifthHomework.tests.TestData.*;
-import static java.lang.Thread.sleep;
 
 public class PracticeFormTests extends TestBase {
 
