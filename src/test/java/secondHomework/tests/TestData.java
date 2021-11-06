@@ -1,6 +1,5 @@
 package secondHomework.tests;
 
-import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
@@ -28,20 +27,20 @@ public class TestData {
         return genderRandom;
     }
 
-    private static String generateHobbie(int randomHobbie) {
-        String hobbieRandom = null;
+    private static String generateHobby(int randomHobbie) {
+        String hobbyRandom = null;
         switch (randomHobbie) {
             case 1:
-                hobbieRandom = "Sports";
+                hobbyRandom = "Sports";
                 break;
             case 2:
-                hobbieRandom = "Reading";
+                hobbyRandom = "Reading";
                 break;
             case 3:
-                hobbieRandom = "Music";
+                hobbyRandom = "Music";
                 break;
         }
-        return hobbieRandom;
+        return hobbyRandom;
     }
 
     private static LocalDate setBirthdayDate() {
@@ -68,10 +67,10 @@ public class TestData {
             firstSubject = "Computer Science",
             secondSubjectPrefix = "e",
             secondSubject = "English",
-            hobbieGenerated = generateHobbie(hobbiesNumber),
-            hobbieSport = "Sports",
-            hobbieRead = "Reading",
-            hobbieMusic = "Music",
+            hobbyGenerated = generateHobby(hobbiesNumber),
+            hobbySport = "Sports",
+            hobbyRead = "Reading",
+            hobbyMusic = "Music",
             fileName = "Tester.jpeg",
             pictureFileSource = "src/test/resources/images/",
             currentAddress = faker.address().streetAddress() + "" + faker.address().streetAddressNumber(),

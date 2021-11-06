@@ -17,17 +17,14 @@ public class PracticeFormTests extends TestBase {
                 .typeUserEmail(email)
                 .chooseGenderCheckbox(gender)
                 .typeMobile(phoneNumber)
+                .setBirthdayDate(birthdayDay, birthdayMonth, birthdayYear)
                 .selectPicture(pictureFileSource + fileName)
                 .typeCurrentAddress(currentAddress)
                 .selectState(statePrefix, state)
                 .selectCity(cityPrefix, city);
 
-        registrationPage
-                .calendar
-                .setDate(birthdayDay, birthdayMonth, birthdayYear);
-
-        String listOfSubjects = registrationPage.subjects.setSubjects(subjectsNumber),
-                listOfHobbies = registrationPage.hobbie.setHobbies(hobbiesNumber);
+        String listOfSubjects = registrationPage.setSubjects(subjectsNumber),
+                listOfHobbies = registrationPage.setHobbies(hobbiesNumber);
 
         registrationPage
                 .clickSubmitButton()

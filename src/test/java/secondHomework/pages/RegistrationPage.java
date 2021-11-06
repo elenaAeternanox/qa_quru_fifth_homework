@@ -2,17 +2,15 @@ package secondHomework.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import secondHomework.pages.components.CalendarComponent;
-import secondHomework.pages.components.HobbieComponent;
+import secondHomework.pages.components.HobbyComponent;
 import secondHomework.pages.components.SubjectComponent;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static secondHomework.tests.TestData.*;
 
 public class RegistrationPage {
 
@@ -38,7 +36,7 @@ public class RegistrationPage {
 
     public CalendarComponent calendar = new CalendarComponent();
     public SubjectComponent subjects = new SubjectComponent();
-    public HobbieComponent hobbie = new HobbieComponent();
+    public HobbyComponent hobbie = new HobbyComponent();
 
     // actions
     public RegistrationPage openPage() {
@@ -48,7 +46,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage typeFirstName(String value) {
-        firstNameInput.setValue(firstName);
+        firstNameInput.setValue(value);
         return this;
     }
 
@@ -70,6 +68,19 @@ public class RegistrationPage {
     public RegistrationPage typeMobile(String value) {
         mobileInput.setValue(value);
         return this;
+    }
+
+    public RegistrationPage setBirthdayDate(String day, String month, String year) {
+        calendar.setDate(day, month, year);
+        return this;
+    }
+
+    public String setSubjects(int subjectsNumber) {
+        return subjects.setSubjects(subjectsNumber);
+    }
+
+    public String setHobbies(int hobbiesNumber) {
+        return hobbie.setHobbies(hobbiesNumber);
     }
 
     public RegistrationPage selectPicture(String pictureFile) {
@@ -100,7 +111,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResultsFormIsDisplayed() {
-        resultsForm.isDisplayed();
+        resultsForm.should(exist);
         resultsFormTitle.shouldHave(text(WELCOME_MESSAGE));
         return this;
     }
@@ -117,7 +128,7 @@ public class RegistrationPage {
 
     public RegistrationPage checkResultsFormIsClosed() {
         resultsForm.shouldNotBe(visible);
-        formTitle.isDisplayed();
+        formTitle.shouldBe(visible);
         return this;
     }
 }
