@@ -9,7 +9,7 @@ public class PracticeFormTests extends TestBase {
 
     @Test
     @DisplayName("Check Practice form on the 'https://demoqa.com/automation-practice-form' page")
-    void fillFormTest() throws InterruptedException {
+    void fillFormTest() {
         registrationPage
                 .openPage()
                 .typeFirstName(firstName)
