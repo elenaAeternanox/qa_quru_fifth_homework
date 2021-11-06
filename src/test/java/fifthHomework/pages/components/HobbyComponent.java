@@ -1,11 +1,11 @@
-package secondHomework.pages.components;
+package fifthHomework.pages.components;
 
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static secondHomework.tests.TestData.*;
-import static secondHomework.tests.TestData.hobbyMusic;
+import static fifthHomework.tests.TestData.*;
+import static fifthHomework.tests.TestData.hobbyMusic;
 
 public class HobbyComponent {
 

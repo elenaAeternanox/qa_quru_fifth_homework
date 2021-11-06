@@ -1,9 +1,9 @@
-package secondHomework.pages;
+package fifthHomework.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import secondHomework.pages.components.CalendarComponent;
-import secondHomework.pages.components.HobbyComponent;
-import secondHomework.pages.components.SubjectComponent;
+import fifthHomework.pages.components.CalendarComponent;
+import fifthHomework.pages.components.HobbyComponent;
+import fifthHomework.pages.components.SubjectComponent;
 
 import java.io.File;
 

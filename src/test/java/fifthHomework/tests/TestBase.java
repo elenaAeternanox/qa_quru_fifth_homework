@@ -1,8 +1,8 @@
-package secondHomework.tests;
+package fifthHomework.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
-import secondHomework.pages.RegistrationPage;
+import fifthHomework.pages.RegistrationPage;
 
 public class TestBase {
 

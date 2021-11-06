@@ -1,9 +1,9 @@
-package secondHomework.tests;
+package fifthHomework.tests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static secondHomework.tests.TestData.*;
+import static fifthHomework.tests.TestData.*;
 
 public class PracticeFormTests extends TestBase {
 

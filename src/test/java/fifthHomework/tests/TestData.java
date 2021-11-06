@@ -1,4 +1,4 @@
-package secondHomework.tests;
+package fifthHomework.tests;
 
 import com.github.javafaker.Faker;
 
