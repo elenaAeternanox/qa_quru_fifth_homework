@@ -4,12 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static fifthHomework.tests.TestData.*;
+import static java.lang.Thread.sleep;
 
 public class PracticeFormTests extends TestBase {
 
     @Test
     @DisplayName("Check Practice form on the 'https://demoqa.com/automation-practice-form' page")
-    void fillFormTest() {
+    void fillFormTest() throws InterruptedException {
         registrationPage
                 .openPage()
                 .typeFirstName(firstName)
@@ -17,13 +18,14 @@ public class PracticeFormTests extends TestBase {
                 .typeUserEmail(email)
                 .chooseGenderCheckbox(gender)
                 .typeMobile(phoneNumber)
-                .setBirthdayDate(birthdayDay, birthdayMonth, birthdayYear)
                 .selectPicture(pictureFileSource + fileName)
                 .typeCurrentAddress(currentAddress)
                 .selectState(statePrefix, state)
                 .selectCity(cityPrefix, city);
 
-        String listOfSubjects = registrationPage.setSubjects(subjectsNumber),
+        String
+                birthdayCheck = registrationPage.setBirthdayDate(birthdayDayMonthYear),
+                listOfSubjects = registrationPage.setSubjects(subjectsNumber),
                 listOfHobbies = registrationPage.setHobbies(hobbiesNumber);
 
         registrationPage
@@ -35,7 +37,7 @@ public class PracticeFormTests extends TestBase {
                 .checkResultsValue(rowStudentEmail, email)
                 .checkResultsValue(rowGender, gender)
                 .checkResultsValue(rowMobile, phoneNumber)
-                .checkResultsValue(rowDateOfBirth, birthdayDay + " " + birthdayMonth + "," + birthdayYear)
+                .checkResultsValue(rowDateOfBirth, birthdayCheck)
                 .checkResultsValue(rowSubjects, listOfSubjects)
                 .checkResultsValue(rowHobbies, listOfHobbies)
                 .checkResultsValue(rowPicture, fileName)

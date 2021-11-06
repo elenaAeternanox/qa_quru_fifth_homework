@@ -4,7 +4,9 @@ import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class TestData {
@@ -43,15 +45,23 @@ public class TestData {
         return hobbyRandom;
     }
 
-    private static LocalDate setBirthdayDate() {
+    private static List<String> setBirthdayDate() {
         Date startDate = Date.from(LocalDate.now().minusYears(120).atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date endDate = Date.from(LocalDate.now().minusYears(8).atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date birthdayDate = faker.date().between(startDate, endDate);
-        return birthdayDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate birthday = birthdayDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String
+                birthdayYear = String.valueOf(birthday.getYear()),
+                birthdayMonthUpperCase = String.valueOf(birthday.getMonth()),
+                birthdayMonth = birthdayMonthUpperCase.substring(0, 1) + birthdayMonthUpperCase.substring(1).toLowerCase(),
+                birthdayDay = String.valueOf(birthday.getDayOfMonth());
+        return Arrays.asList(birthdayDay, birthdayMonth, birthdayYear);
     }
 
     public static int subjectsNumber = faker.number().numberBetween(1, 2),
             hobbiesNumber = faker.number().numberBetween(1, 3);
+
+    public static List<String> birthdayDayMonthYear = setBirthdayDate();
 
     public static String
             firstName = faker.name().firstName(),
@@ -59,10 +69,6 @@ public class TestData {
             email = faker.internet().emailAddress(),
             gender = generateGender(faker.number().numberBetween(0, 2)),
             phoneNumber = String.valueOf(faker.number().digits(10)),
-            birthdayYear = String.valueOf(setBirthdayDate().getYear()),
-            birthdayMonthUpperCase = String.valueOf(setBirthdayDate().getMonth()),
-            birthdayMonth = birthdayMonthUpperCase.substring(0, 1) + birthdayMonthUpperCase.substring(1).toLowerCase(),
-            birthdayDay = String.valueOf(setBirthdayDate().getDayOfMonth()),
             firstSubjectPrefix = "co",
             firstSubject = "Computer Science",
             secondSubjectPrefix = "e",

@@ -6,6 +6,7 @@ import fifthHomework.pages.components.HobbyComponent;
 import fifthHomework.pages.components.SubjectComponent;
 
 import java.io.File;
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -29,14 +30,14 @@ public class RegistrationPage {
             statePrefixInput = $("#react-select-3-input"),
             cityPrefixInput = $("#react-select-4-input"),
             submitButton = $("#submit"),
-            resultsForm = $("#modal-dialog"),
+            resultsForm = $(".modal-content"),
             resultsFormTitle = $("#example-modal-sizes-title-lg"),
             resultsTable = $(".table-responsive"),
             closeButton = $("#closeLargeModal");
 
     public CalendarComponent calendar = new CalendarComponent();
     public SubjectComponent subjects = new SubjectComponent();
-    public HobbyComponent hobbie = new HobbyComponent();
+    public HobbyComponent hobby = new HobbyComponent();
 
     // actions
     public RegistrationPage openPage() {
@@ -70,9 +71,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setBirthdayDate(String day, String month, String year) {
-        calendar.setDate(day, month, year);
-        return this;
+    public String setBirthdayDate(List<String> birthday) {
+        calendar.setDate(birthday.get(0), birthday.get(1), birthday.get(2));
+        return birthday.get(0) + " " + birthday.get(1) + "," + birthday.get(2);
     }
 
     public String setSubjects(int subjectsNumber) {
@@ -80,7 +81,7 @@ public class RegistrationPage {
     }
 
     public String setHobbies(int hobbiesNumber) {
-        return hobbie.setHobbies(hobbiesNumber);
+        return hobby.setHobbies(hobbiesNumber);
     }
 
     public RegistrationPage selectPicture(String pictureFile) {
