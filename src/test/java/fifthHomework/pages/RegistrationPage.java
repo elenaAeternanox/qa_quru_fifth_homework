@@ -31,7 +31,7 @@ public class RegistrationPage {
             cityPrefixInput = $("#react-select-4-input"),
             submitButton = $("#submit"),
             resultsForm = $(".modal-content"),
-            resultsFormTitle = $("#example-modal-sizes-title-lg"),
+            resultsFormTitle = $(".modal-header"),
             resultsTable = $(".table-responsive"),
             closeButton = $("#closeLargeModal");
 
